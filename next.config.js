@@ -1,3 +1,15 @@
 module.exports = {
-  reactStrictMode: true,
+    env: { },
+    publicRuntimeConfig: {},
+    swcMinify: true,
+    images: {
+        formats: [
+            'image/avif', 
+            'image/webp'
+        ],
+        domains: [
+            'localhost', 
+            'res.cloudinary.com'
+        ]
+    },
 }

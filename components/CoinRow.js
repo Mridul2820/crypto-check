@@ -12,7 +12,7 @@ const CoinRow = ({ coin, index }) => {
     }
 
     const optionsSingle = {
-        maximumFractionDigits: 8,
+        maximumFractionDigits: 2,
         style: 'currency',
         currency: 'INR'
     }

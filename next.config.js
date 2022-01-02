@@ -9,7 +9,8 @@ module.exports = {
         ],
         domains: [
             'localhost', 
-            'res.cloudinary.com'
+            'res.cloudinary.com',
+            'assets.coingecko.com'
         ]
     },
 }

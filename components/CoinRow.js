@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-// import PriceChart from './PriceChart'
+import PriceChart from './PriceChart'
 
 const CoinRow = ({ coin, index }) => {
 
@@ -39,9 +39,9 @@ const CoinRow = ({ coin, index }) => {
                     {coin.market_cap.toLocaleString('en-IN', optionsFull)}
                 </span>
                 <span className="hidden md:block">
-                    {/* <PriceChart 
+                    <PriceChart 
                         sparklin={coin.sparkline_in_7d?.price}
-                    /> */}
+                    />
                 </span>
             </a>
         </Link>

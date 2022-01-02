@@ -18,13 +18,13 @@ export const getServerSideProps = async () => {
 const index = ({ filteredCoins }) => {
     return (
         <div className="px-5 flex flex-col pb-4 space-y-1 min-h-[50vh]">
-            <div className="grid gap-4 grid-cols-gridcoinsm md:grid-cols-gridcoin items-center sticky z-10 top-0 px-0 sm:px-3  py-4 text-gray-700 border-b-[1px] border-gray-600 tracking-wider bg-slate-50">
+            <div className="grid gap-2 md:gap-4 grid-cols-gridcoinsm md:grid-cols-gridcoin items-center sticky z-10 top-0 px-0 sm:px-3 py-4 text-gray-700 border-b-[1px] border-gray-600 bg-slate-50">
                 <span className="">#</span>
                 <span className="">Name</span>
                 <span className="">Code</span>
                 <span className="">Price</span>
-                <span className="">Market Cap</span>
-                <span className="">Last 7 Days</span>
+                <span className="hidden md:block">Market Cap</span>
+                <span className="hidden md:block">Last 7 Days</span>
             </div>
 
             {filteredCoins?.map((coin, index) => (

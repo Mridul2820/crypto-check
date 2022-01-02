@@ -7,7 +7,7 @@ module.exports = {
         extend: {
             gridTemplateColumns: {
                 'gridcoin': '30px 1.8fr 40px .8fr 1fr 2fr',
-                'gridcoinsm': '6fr 40px',
+                'gridcoinsm': '16px 1.2fr 40px .8fr',
             }
         },
     },

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import PriceChart from './PriceChart'
 
 const CoinRow = ({ coin, index }) => {
 
@@ -18,7 +19,7 @@ const CoinRow = ({ coin, index }) => {
 
     return (
         <Link href={`/coin/${coin.id}`}>
-            <a className="grid gap-2 md:gap-4 grid-cols-gridcoinsm md:grid-cols-gridcoin items-center px-0 sm:px-3 h-14 hover:bg-slate-100 hover:scale-105 transition-all hover:shadow-md rounded-md cursor-pointer">
+            <a className="grid gap-2 md:gap-4 grid-cols-gridcoinsm md:grid-cols-gridcoin items-center px-0 sm:px-3 h-14 hover:bg-slate-100 transition-all hover:shadow-md rounded-md cursor-pointer">
                 <span>{index + 1}</span>
                 <span className="flex gap-2 items-center">
                     <Image
@@ -37,7 +38,11 @@ const CoinRow = ({ coin, index }) => {
                 <span className="hidden md:block">
                     {coin.market_cap.toLocaleString('en-IN', optionsFull)}
                 </span>
-                <span className="hidden md:block"></span>
+                <span className="hidden md:block">
+                    <PriceChart 
+                        sparklin={coin.sparkline_in_7d?.price}
+                    />
+                </span>
             </a>
         </Link>
     )

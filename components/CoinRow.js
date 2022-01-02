@@ -19,8 +19,8 @@ const CoinRow = ({ coin, index }) => {
 
     return (
         <Link href={`/coin/${coin.id}`}>
-            <a className="grid gap-2 md:gap-4 grid-cols-gridcoinsm md:grid-cols-gridcoin items-center px-0 sm:px-3 h-14 hover:bg-slate-100 transition-all hover:shadow-md rounded-md cursor-pointer">
-                <span>{index + 1}</span>
+            <a className="grid gap-2 md:gap-4 grid-cols-gridcoinsm md:grid-cols-gridcoin items-center mt-0 px-0 sm:px-3 h-12 md:h-16 hover:bg-slate-100 transition-all hover:shadow-md cursor-pointer border-b-[1px] border-gray-300">
+                <span>{index + 1}.</span>
                 <span className="flex gap-2 items-center">
                     <Image
                         height={25}
@@ -31,14 +31,23 @@ const CoinRow = ({ coin, index }) => {
                     />
                     <h2>{coin.name}</h2>
                 </span>
-                <span>{coin.symbol}</span>
+                <span className="hidden md:inline-block">{coin.symbol}</span>
                 <span>
                     {coin.current_price.toLocaleString('en-IN', optionsSingle)}
                 </span>
-                <span className="hidden md:block">
+                <span className="hidden md:inline-block">
                     {coin.market_cap.toLocaleString('en-IN', optionsFull)}
                 </span>
-                <span className="hidden md:block">
+                <span>
+                    {Math.round(coin.price_change_percentage_1h_in_currency * 10) / 10}%
+                </span>
+                <span className="hidden md:inline-block">
+                    {Math.round(coin.price_change_percentage_24h_in_currency * 10) / 10}%
+                </span>
+                <span className="hidden md:inline-block">
+                    {Math.round(coin.price_change_percentage_7d_in_currency * 10) / 10}%
+                </span>
+                <span className="hidden md:inline-block">
                     <PriceChart 
                         sparklin={coin.sparkline_in_7d?.price}
                     />

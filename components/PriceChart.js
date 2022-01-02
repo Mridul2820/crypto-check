@@ -1,5 +1,5 @@
 import React from 'react'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, Tooltip } from 'recharts';
 
 const PriceChart = ({ sparklin }) => {
     let sparklinObj = []
@@ -9,7 +9,7 @@ const PriceChart = ({ sparklin }) => {
     }
 
     return (
-        <LineChart width={300} height={56} data={sparklinObj}>
+        <LineChart width={250} height={56} data={sparklinObj}>
             <Tooltip />
             <Line type="monotone" dataKey="price" stroke="#8884d8" strokeWidth={1} dot={false} />
         </LineChart>

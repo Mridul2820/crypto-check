@@ -33,10 +33,10 @@ const CoinRow = ({ coin, index }) => {
                 </span>
                 <span className="hidden md:inline-block">{coin.symbol}</span>
                 <span>
-                    {(coin.current_price * 1).toLocaleString('en-IN', optionsSingle)}
+                    {/* {(coin.current_price * 1).toLocaleString('en-IN', optionsSingle)} */}
                 </span>
                 <span className="hidden md:inline-block">
-                    {(coin.market_cap * 1).toLocaleString('en-IN', optionsFull)}
+                    {/* {(coin.market_cap * 1).toLocaleString('en-IN', optionsFull)} */}
                 </span>
                 <span>
                     {Math.round(coin.price_change_percentage_1h_in_currency * 10) / 10}%

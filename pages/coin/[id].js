@@ -8,7 +8,7 @@ import SocialMarket from '../../components/SocialMarket';
 export async function getServerSideProps(context) {
     const { id } = context.query;
   
-    const res = await fetch(`https://api.coingecko.com/api/v3/coins/${id}?sparkline=true&tickers=false`);
+    const res = await fetch(`https://api.coingecko.com/api/v3/coins/${id}?sparkline=true&tickers=false&developer_data=false`);
   
     const data = await res.json();
   
@@ -41,6 +41,7 @@ const Coin = ({ coin }) => {
                 />
                 <h1 className='text-3xl font-bold'>{coin.name}</h1>
                 <p className='uppercase text-xl font-bold'>({coin.symbol})</p>
+                <p className='text-xl text-slate-400'>#{coin.market_cap_rank}</p>
             </div>
             <div className="mt-3">
                 <h2 className='text-2xl font-bold text-center'>

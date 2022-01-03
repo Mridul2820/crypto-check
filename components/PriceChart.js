@@ -1,17 +1,17 @@
 import React from 'react'
 import { LineChart, Line, Tooltip } from 'recharts';
 
-const PriceChart = ({ sparklin, graphColor }) => {
-    const baseValue = Math.min(sparklin)
-    console.log(baseValue)
-    let sparklinObj = []
+const PriceChart = ({ sparkline, graphColor, GraphWidth, GraphHeight }) => {
+    const baseValue = Math.min(sparkline)
 
-    for(let i = 0; i <= sparklin.length; i++){
-        sparklinObj.push({Price: sparklin[i]})
+    let sparklineObj = []
+
+    for(let i = 0; i <= sparkline.length; i++){
+        sparklineObj.push({Price: sparkline[i]})
     }
 
     return (
-        <LineChart width={250} height={56} data={sparklinObj}>
+        <LineChart width={GraphWidth} height={GraphHeight} data={sparklineObj}>
             <Tooltip />
             <Line 
                 type="monotone" 

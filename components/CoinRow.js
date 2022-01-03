@@ -31,7 +31,7 @@ const CoinRow = ({ coin, index }) => {
                         src={coin.image}
                         alt={coin.name}
                     />
-                    <h2>{coin.name}</h2>
+                    <h2 className="font-semibold">{coin.name}</h2>
                 </span>
                 <small className="hidden md:inline-block uppercase">
                     {coin.symbol}
@@ -53,8 +53,10 @@ const CoinRow = ({ coin, index }) => {
                 </span>
                 <span className="hidden md:inline-block">
                     <PriceChart 
-                        sparklin={coin.sparkline_in_7d?.price}
+                        sparkline={coin.sparkline_in_7d?.price}
                         graphColor={coin.price_change_percentage_7d_in_currency}
+                        GraphWidth={250}
+                        GraphHeight={56}
                     />
                 </span>
             </a>

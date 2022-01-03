@@ -9,8 +9,6 @@ import Logo from '../public/logo.png'
 const Navbar = () => {
     const [currencyId, setcurrencyId] = useRecoilState(currencyState);
 
-    console.log(currencyId)
-
     return (
         <div className='flex items-center justify-between p-4'>
             <Link href="/">

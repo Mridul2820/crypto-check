@@ -6,13 +6,15 @@ import PriceChart from './PriceChart'
 const CoinRow = ({ coin, index }) => {
 
     const optionsFull = {
-        maximumFractionDigits: 0,
+        maximumFractionDigits: 0, 
+        minimumFractionDigits: 0,
         style: 'currency',
         currency: 'INR'
     }
 
     const optionsSingle = {
-        maximumFractionDigits: 10,
+        maximumFractionDigits: 4, 
+        minimumFractionDigits: 0,
         style: 'currency',
         currency: 'INR'
     }
@@ -31,25 +33,28 @@ const CoinRow = ({ coin, index }) => {
                     />
                     <h2>{coin.name}</h2>
                 </span>
-                <span className="hidden md:inline-block">{coin.symbol}</span>
+                <small className="hidden md:inline-block uppercase">
+                    {coin.symbol}
+                </small>
                 <span>
-                    {/* {(coin.current_price * 1).toLocaleString('en-IN', optionsSingle)} */}
+                    {(coin.current_price * 1).toLocaleString('en-IN', optionsSingle)}
                 </span>
                 <span className="hidden md:inline-block">
-                    {/* {(coin.market_cap * 1).toLocaleString('en-IN', optionsFull)} */}
+                    {(coin.market_cap * 1).toLocaleString('en-IN', optionsFull)}
                 </span>
-                <span>
+                <span className={`${coin.price_change_percentage_1h_in_currency > 0 ? 'text-green-600' : 'text-red-600'}`}>
                     {Math.round(coin.price_change_percentage_1h_in_currency * 10) / 10}%
                 </span>
-                <span className="hidden md:inline-block">
+                <span className={`${coin.price_change_percentage_24h_in_currency > 0 ? 'text-green-600' : 'text-red-600'} hidden md:inline-block`}>
                     {Math.round(coin.price_change_percentage_24h_in_currency * 10) / 10}%
                 </span>
-                <span className="hidden md:inline-block">
+                <span className={`${coin.price_change_percentage_7d_in_currency > 0 ? 'text-green-600' : 'text-red-600'} hidden md:inline-block`}>
                     {Math.round(coin.price_change_percentage_7d_in_currency * 10) / 10}%
                 </span>
                 <span className="hidden md:inline-block">
                     <PriceChart 
                         sparklin={coin.sparkline_in_7d?.price}
+                        graphColor={coin.price_change_percentage_7d_in_currency}
                     />
                 </span>
             </a>

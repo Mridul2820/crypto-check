@@ -1,9 +1,13 @@
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import React from 'react'
 // import { ResponsiveContainer } from 'recharts';
-import CoinMarket from '../../components/CoinMarket';
-import SocialMarket from '../../components/SocialMarket';
 // import PriceChart from '../../components/PriceChart';
+
+const CoinMarket = dynamic(() => import('../../components/CoinMarket'));
+const PriceChange = dynamic(() => import('../../components/PriceChange'));
+const SocialMarket = dynamic(() => import('../../components/SocialMarket'));
+
 
 export async function getServerSideProps(context) {
     const { id } = context.query;
@@ -49,6 +53,10 @@ const Coin = ({ coin }) => {
                     {(coin.market_data.current_price.inr * 1).toLocaleString('en-IN', optionsFull)}
                 </h2>
             </div>
+
+            <PriceChange 
+                market={coin.market_data}
+            />
 
             <div className="flex gap-8 flex-col md:flex-row max-w-[1000px] mx-auto mt-8">
                 <CoinMarket 

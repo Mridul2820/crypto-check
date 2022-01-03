@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react'
 // import { ResponsiveContainer } from 'recharts';
 import CoinMarket from '../../components/CoinMarket';
+import SocialMarket from '../../components/SocialMarket';
 // import PriceChart from '../../components/PriceChart';
 
 export async function getServerSideProps(context) {
@@ -48,11 +49,16 @@ const Coin = ({ coin }) => {
                 </h2>
             </div>
 
-            <div className="flex gap-5 flex-col md:flex-row max-w-[1000px] mx-auto mt-5">
+            <div className="flex gap-8 flex-col md:flex-row max-w-[1000px] mx-auto mt-8">
                 <CoinMarket 
                     coinName={coin.name}
                     coinDate={coin.genesis_date}
                     coinMarket={coin.market_data}
+                />
+
+                <SocialMarket 
+                    coinName={coin.name}
+                    Links={coin.links}
                 />
             </div>
 

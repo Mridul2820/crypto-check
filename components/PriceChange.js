@@ -24,25 +24,25 @@ const PriceChange = ({ market }) => {
                     <tbody>
                         <tr>
                             <td className={TableCellBG}>Percentage</td>
-                            <td className={TableCell}>-</td>
-                            <td className={TableCell}>{market.price_change_percentage_24h}</td>
-                            <td className={TableCell}>{market.price_change_percentage_7d}</td>
-                            <td className={TableCell}>{market.price_change_percentage_14d}</td>
-                            <td className={TableCell}>{market.price_change_percentage_30d}</td>
-                            <td className={TableCell}>{market.price_change_percentage_60d}</td>
-                            <td className={TableCell}>{market.price_change_percentage_200d}</td>
-                            <td className={TableCell}>{market.price_change_percentage_1y}</td>
+                            <td className={`${TableCell}`}>-</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_24h > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_24h}</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_7d > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_7d}</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_14d > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_14d}</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_30d > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_30d}</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_60d > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_60d}</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_200d > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_200d}</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_1y > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_1y}</td>
                         </tr>
                         <tr>
-                            <td  className={TableCellBG}>Currency</td>
-                            <td className={TableCell}>{market.price_change_percentage_1h_in_currency.inr}</td>
-                            <td className={TableCell}>{market.price_change_percentage_24h_in_currency.inr}</td>
-                            <td className={TableCell}>{market.price_change_percentage_7d_in_currency.inr}</td>
-                            <td className={TableCell}>{market.price_change_percentage_14d_in_currency.inr}</td>
-                            <td className={TableCell}>{market.price_change_percentage_30d_in_currency.inr}</td>
-                            <td className={TableCell}>{market.price_change_percentage_60d_in_currency.inr}</td>
-                            <td className={TableCell}>{market.price_change_percentage_200d_in_currency.inr}</td>
-                            <td className={TableCell}>{market.price_change_percentage_1y_in_currency.inr}</td>
+                            <td className={TableCellBG}>Currency</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_1h_in_currency.inr > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_1h_in_currency.inr}</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_24h_in_currency.inr > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_24h_in_currency.inr}</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_7d_in_currency.inr > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_7d_in_currency.inr}</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_14d_in_currency.inr > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_14d_in_currency.inr}</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_30d_in_currency.inr > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_30d_in_currency.inr}</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_60d_in_currency.inr > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_60d_in_currency.inr}</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_200d_in_currency.inr > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_200d_in_currency.inr}</td>
+                            <td className={`${TableCell} ${market.price_change_percentage_1y_in_currency.inr > 0 ? 'text-green-600' : 'text-red-600'}`}>{market.price_change_percentage_1y_in_currency.inr}</td>
                         </tr>
                     </tbody>
                 </table>

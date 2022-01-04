@@ -9,8 +9,8 @@ const PriceChange = ({ market }) => {
     const TableCellBG = 'p-2 text-left border-[1px] bg-slate-200 border-slate-400 select-none uppercase'
     return (
         <div className='mt-6'>
-            <p className='mb-2 text-lg font-semibold text-center'>Price Chart</p>
-            <div className="max-w-fit overflow-x-scroll md:overflow-x-hidden mx-auto">
+            <p className='mb-2 text-lg font-semibold text-center'>Price Change</p>
+            <div className="max-w-fit overflow-x-scroll md:overflow-x-hidden mx-auto shadow-bs2">
                 <table>
                     <thead>
                         <tr>

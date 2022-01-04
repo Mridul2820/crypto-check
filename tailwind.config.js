@@ -25,7 +25,8 @@ module.exports = {
                 'rotate-slow': 'rotate 15s linear infinite',
             },
             boxShadow: {
-                'big': '0px 10px 36px 0px rgba(0, 0, 0, 0.16), 0px 0px 0px 1px rgba(0, 0, 0, 0.06)'
+                'bs1': '0px 10px 36px 0px rgba(0, 0, 0, 0.16), 0px 0px 0px 1px rgba(0, 0, 0, 0.06)',
+                'bs2': 'rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px'
             }
         },
     },

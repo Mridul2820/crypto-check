@@ -1,21 +1,30 @@
 import React from 'react'
 import { LineChart, Line, Tooltip, YAxis, XAxis } from 'recharts';
 
-const PriceChartFull = ({ sparkline, graphColor, GraphWidth, GraphHeight }) => {
+const PriceChartFull = ({ sparkline, GraphWidth, GraphHeight }) => {
     const baseValue = Math.min(sparkline)
 
     let sparklineObj = []
 
     for(let i = 0; i <= sparkline.length; i++){
-        sparklineObj.push({Price: Math.round(sparkline[i] * 10) / 10})
+        sparklineObj.push({Price: sparkline[i]})
+    }
+
+    const tickFormatter = value => {
+        const roundVal = Math.round((value * 10) / 10)
+
+        return roundVal
     }
 
     return (
         <LineChart width={GraphWidth} height={GraphHeight} data={sparklineObj}>
             <Tooltip />
-            <XAxis />
+            <XAxis 
+                tickCount={7}
+            />
             <YAxis 
-                domain={["dataMin - 200", 'dataMax + 200']}
+                domain={["dataMin", 'dataMax']}
+                tickFormatter={tickFormatter}
             />
             <Line 
                 type="monotone" 

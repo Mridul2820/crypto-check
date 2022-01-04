@@ -72,7 +72,7 @@ const Coin = ({ coin }) => {
                 />
             </div>
 
-            <ResponsiveContainer width="100%" height="100%" className="flex justify-center mt-8 shadow-bs2 max-w-[1000px] mx-auto rounded-md bg-white p-3">
+            <ResponsiveContainer width="100%" height="100%" className="flex justify-center mt-8 shadow-bs2 max-w-[1000px] mx-auto rounded-md bg-white p-3 select-none">
                 <PriceChartFull 
                     sparkline={coin.market_data?.sparkline_7d?.price}
                     GraphWidth={800}

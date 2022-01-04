@@ -5,7 +5,7 @@ const Footer = () => {
         <div className='p-3 flex justify-center bg-slate-200'>
             &copy; {new Date().getFullYear()} Made with ❤ by
             <a 
-                className='ml-1' 
+                className='ml-1 font-semibold' 
                 href="https://www.mridul.tech/"
                 target='_blank'
                 rel='noreferrer'

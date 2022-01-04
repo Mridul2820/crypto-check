@@ -29,6 +29,7 @@ const index = ({ filteredCoins }) => {
             <NextSeo {...SEO} />
 
             <div className="absolute top-0 left-5 right-5 h-80 overflow-x-hidden z-10">
+                <h1 className='font-bold text-3xl text-center mt-5'>Crypto Check</h1>
                 <img 
                     src="./assets/bitcoin-big.svg"
                     alt="logo" 

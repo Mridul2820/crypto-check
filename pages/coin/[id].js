@@ -1,15 +1,13 @@
-import dynamic from 'next/dynamic';
-import Image from 'next/image';
 import React from 'react'
-import { useRecoilValue } from 'recoil';
-import { currencyState } from '../../atoms/currencyAtom';
+import dynamic from 'next/dynamic';
+
 // import { ResponsiveContainer } from 'recharts';
 // import PriceChart from '../../components/PriceChart';
 
 const CoinMarket = dynamic(() => import('../../components/CoinMarket'));
 const PriceChange = dynamic(() => import('../../components/PriceChange'));
 const SocialMarket = dynamic(() => import('../../components/SocialMarket'));
-
+const CoinDetail = dynamic(() => import('../../components/CoinDetail'));
 
 export async function getServerSideProps(context) {
     const { id } = context.query;
@@ -26,36 +24,12 @@ export async function getServerSideProps(context) {
 }
 
 const Coin = ({ coin }) => {
-    const currencyId = useRecoilValue(currencyState);
-
-    const optionsFull = {
-        maximumFractionDigits: 0, 
-        minimumFractionDigits: 0,
-        style: 'currency',
-        currency: currencyId.toUpperCase()
-    }
 
     return (
         <div className="p-4">
-            <div className="flex items-center gap-x-3 justify-center">
-                <Image 
-                    src={coin.image.large}
-                    alt={coin.name}
-                    height={36}
-                    width={36}
-                    objectFit='contain'
-                    priority="true"
-                />
-                <h1 className='text-3xl font-bold'>{coin.name}</h1>
-                <p className='uppercase text-xl font-bold'>({coin.symbol})</p>
-                <p className='text-xl text-slate-400'>#{coin.market_cap_rank}</p>
-            </div>
-            <div className="mt-3">
-                <h2 className='text-2xl font-bold text-center'>
-                    Current Price: {' '}
-                    {(coin.market_data.current_price[currencyId] * 1).toLocaleString('en-IN', optionsFull)}
-                </h2>
-            </div>
+            <CoinDetail 
+                coin={coin}
+            />
 
             <PriceChange 
                 market={coin.market_data}

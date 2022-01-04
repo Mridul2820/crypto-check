@@ -5,13 +5,6 @@ import { currencyState } from '../atoms/currencyAtom';
 const PriceChange = ({ market }) => {
     const currencyId = useRecoilValue(currencyState);
 
-    const optionsFull = {
-        maximumFractionDigits: 0, 
-        minimumFractionDigits: 0,
-        style: 'currency',
-        currency: currencyId.toUpperCase()
-    }
-
     const TableCell = 'p-2 text-left border-[1px] border-slate-400 hover:bg-slate-100 cursor-pointer'
     const TableCellBG = 'p-2 text-left border-[1px] bg-slate-200 border-slate-400 select-none uppercase'
     return (

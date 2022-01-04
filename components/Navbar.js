@@ -12,7 +12,7 @@ const Navbar = () => {
     return (
         <div className='flex items-center justify-between px-4 py-2 shadow-md border-b-[1px] border-slate-300'>
             <Link href="/">
-                <a>
+                <a className='p-1 animate-rotate-slow'>
                     <Image
                         height={35}
                         width={35}

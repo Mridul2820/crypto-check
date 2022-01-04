@@ -2,8 +2,8 @@ import React from 'react'
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
 
-// import { ResponsiveContainer } from 'recharts';
-// import PriceChart from '../../components/PriceChart';
+import { ResponsiveContainer } from 'recharts';
+import PriceChart from '../../components/PriceChart';
 
 const CoinMarket = dynamic(() => import('../../components/CoinMarket'));
 const PriceChange = dynamic(() => import('../../components/PriceChange'));
@@ -48,7 +48,7 @@ const Coin = ({ coin }) => {
     };
 
     return (
-        <div className="p-4 min-h-[calc(100vh-112px)] bg-light-blue">
+        <div className="p-4 min-h-[calc(100vh-112px)] bg-light-blue mb-5">
             <NextSeo {...SEO} />
 
             <CoinDetail 
@@ -59,7 +59,7 @@ const Coin = ({ coin }) => {
                 market={coin.market_data}
             />
 
-            <div className="flex gap-8 flex-col md:flex-row max-w-[1000px] mx-auto mt-8">
+            <div className="flex gap-y-4 gap-x-8 flex-col md:flex-row max-w-[1000px] mx-auto mt-8">
                 <CoinMarket 
                     coinName={coin.name}
                     coinDate={coin.genesis_date}
@@ -72,14 +72,14 @@ const Coin = ({ coin }) => {
                 />
             </div>
 
-            {/* <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="100%" height="100%" className="flex justify-center mt-8 shadow-bs2 max-w-[1000px] mx-auto rounded-md bg-white">
                 <PriceChart 
                     sparkline={coin.market_data?.sparkline_7d?.price}
                     // graphColor={coin.price_change_percentage_7d_in_currency}
                     GraphWidth={800}
                     GraphHeight={300}
                 />
-            </ResponsiveContainer> */}
+            </ResponsiveContainer>
         </div>
     )
 }

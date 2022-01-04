@@ -2,7 +2,9 @@ const path = require('path')
 require('dotenv').config()
 
 module.exports = {
-    env: {},
+    env: {
+        SITE_URL: process.env.SITE_URL,
+    },
     publicRuntimeConfig: {},
     images: {
         formats: [

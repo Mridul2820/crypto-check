@@ -1,5 +1,6 @@
 import React from 'react'
 import dynamic from 'next/dynamic';
+import { NextSeo } from 'next-seo';
 
 // import { ResponsiveContainer } from 'recharts';
 // import PriceChart from '../../components/PriceChart';
@@ -8,6 +9,8 @@ const CoinMarket = dynamic(() => import('../../components/CoinMarket'));
 const PriceChange = dynamic(() => import('../../components/PriceChange'));
 const SocialMarket = dynamic(() => import('../../components/SocialMarket'));
 const CoinDetail = dynamic(() => import('../../components/CoinDetail'));
+
+const { SITE_URL } = process.env
 
 export async function getServerSideProps(context) {
     const { id } = context.query;
@@ -24,9 +27,30 @@ export async function getServerSideProps(context) {
 }
 
 const Coin = ({ coin }) => {
+    const SEO = {
+        title: `${coin?.name} (${coin.symbol.toUpperCase()}) info, price today, market cap`,
+        description: `View ${coin?.name} crypto price and chart, ${coin.symbol.toUpperCase()} market cap, circulating supply, latest news and more.`,
+        canonical: `${SITE_URL}/coin/${coin?.id}`,
+
+        openGraph: {
+            title: `${coin?.name} (${coin.symbol.toUpperCase()}) info, price today, market cap`,
+            url: `${SITE_URL}/coin/${coin?.id}`,
+            description: `View ${coin?.name} crypto price and chart, ${coin.symbol.toUpperCase()} market cap, circulating supply, latest news and more.`,
+            images: [
+                {
+                    url: coin?.image?.large,
+                    width: 300,
+                    height: 300,
+                    alt: coin?.name
+                }
+            ],
+        }
+    };
 
     return (
         <div className="p-4 min-h-[calc(100vh-112px)] bg-light-blue">
+            <NextSeo {...SEO} />
+
             <CoinDetail 
                 coin={coin}
             />

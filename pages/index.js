@@ -1,3 +1,4 @@
+import { NextSeo } from 'next-seo';
 import React from 'react'
 import CoinRow from '../components/CoinRow';
 
@@ -17,8 +18,14 @@ export const getStaticProps = async () => {
 };
 
 const index = ({ filteredCoins }) => {
+    const SEO = {
+        canonical: SITE_URL
+    };
+
     return (
         <div className="px-5 flex flex-col pb-4 min-h-[50vh] shadow-lg relative pt-24">
+            <NextSeo {...SEO} />
+
             <div className="absolute top-0 left-5 right-5 h-80 overflow-x-hidden z-10">
                 <img 
                     src="./assets/bitcoin-big.svg"

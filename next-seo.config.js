@@ -1,8 +1,8 @@
 export default {
-    title: "Crypto Check - Get all details about the prices of cryptocurrencies",
+    title: "Crypto Check - Get all details about the cryptocurrencies",
     description: "Crypto Check - Get all details about the prices of cryptocurrencies",
     openGraph: {
-        title: "Crypto Check - Get all details about the prices of cryptocurrencies",
+        title: "Crypto Check - Get all details about the cryptocurrencies",
         description: "Crypto Check - Get all details about the prices of cryptocurrencies",
         type: 'website',
         locale: 'en_IN',

@@ -5,7 +5,7 @@ import { IoLogoBitbucket } from 'react-icons/io5'
 
 const SocialMarket = ({ Links, coinName }) => {
     return (
-        <div className='w-[100%] md:w-[50%] shadow-bs2 p-4'>
+        <div className='w-[100%] md:w-[50%] shadow-bs2 p-4 bg-white rounded-md'>
             <p className='mb-2 text-xl font-semibold'>Social Info of {coinName}</p>
             {Links.homepage.length > 0 && 
                 <div className='flex gap-2 justify-between py-1 border-b-[1px] border-slate-300'>

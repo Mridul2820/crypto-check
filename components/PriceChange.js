@@ -5,8 +5,9 @@ import { currencyState } from '../atoms/currencyAtom';
 const PriceChange = ({ market }) => {
     const currencyId = useRecoilValue(currencyState);
 
-    const TableCell = 'p-2 text-left border-[1px] border-slate-400 hover:bg-slate-100 cursor-pointer'
+    const TableCell = 'p-2 text-left border-[1px] border-slate-400 hover:bg-slate-100 cursor-pointer bg-white'
     const TableCellBG = 'p-2 text-left border-[1px] bg-slate-200 border-slate-400 select-none uppercase'
+
     return (
         <div className='mt-6'>
             <p className='mb-2 text-lg font-semibold text-center'>Price Change</p>

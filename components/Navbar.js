@@ -10,7 +10,7 @@ const Navbar = () => {
     const [currencyId, setcurrencyId] = useRecoilState(currencyState);
 
     return (
-        <div className='flex items-center justify-between p-4'>
+        <div className='flex items-center justify-between px-4 py-2 shadow-md border-b-[1px] border-slate-300'>
             <Link href="/">
                 <a>
                     <Image
@@ -19,6 +19,7 @@ const Navbar = () => {
                         objectFit='contain'
                         src={Logo}
                         alt="logo"
+                        priority={true}
                     />
                 </a>
             </Link>

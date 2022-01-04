@@ -18,12 +18,12 @@ export const getStaticProps = async () => {
 
 const index = ({ filteredCoins }) => {
     return (
-        <div className="px-5 flex flex-col pb-4 min-h-[50vh] shadow-lg relative pt-24 ">
+        <div className="px-5 flex flex-col pb-4 min-h-[50vh] shadow-lg relative pt-24">
             <div className="absolute top-0 left-5 right-5 h-80 overflow-x-hidden z-10">
                 <img 
-                    src="./assets/bitcoin-tree.svg"
+                    src="./assets/bitcoin-big.svg"
                     alt="logo" 
-                    className='absolute top-4 -left-5 w-72'
+                    className='absolute top-4 left-5 w-20 hover:scale-105 transition-all duration-500 ease-out'
                 />
                 <img 
                     src="./assets/ethereum-bubble.svg"
@@ -33,7 +33,7 @@ const index = ({ filteredCoins }) => {
             </div>
 
             <div className="shadow-bs1 mb-5 z-20">
-                <div className="grid gap-2 md:gap-4 grid-cols-gridcoinsm md:grid-cols-gridcoin items-center sticky top-0 px-2 sm:px-3 py-4 text-gray-700 border-b-[1px] border-gray-600 bg-slate-50">
+                <div className="grid gap-2 md:gap-4 grid-cols-gridcoinsm md:grid-cols-gridcoin items-center sticky top-0 px-2 sm:px-3 py-4 text-gray-700 border-b-[1px] border-gray-600 bg-slate-50 z-40">
                     <span className="">#</span>
                     <span className="">Name</span>
                     <span className="">Code</span>
@@ -45,7 +45,7 @@ const index = ({ filteredCoins }) => {
                     <span className="hidden md:block">Last 7 Days</span>
                 </div>
 
-                <div className="bg-white">
+                <div className="bg-white z-30">
                     {filteredCoins?.map((coin, index) => (
                         <CoinRow 
                             key={coin.id}

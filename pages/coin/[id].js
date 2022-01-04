@@ -26,7 +26,7 @@ export async function getServerSideProps(context) {
 const Coin = ({ coin }) => {
 
     return (
-        <div className="p-4 min-h-screen bg-light-blue">
+        <div className="p-4 min-h-[calc(100vh-112px)] bg-light-blue">
             <CoinDetail 
                 coin={coin}
             />

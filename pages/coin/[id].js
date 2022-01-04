@@ -24,12 +24,9 @@ export async function getServerSideProps(context) {
         }
     };
 }
-  
 
 const Coin = ({ coin }) => {
     const currencyId = useRecoilValue(currencyState);
-
-    console.log(currencyId)
 
     const optionsFull = {
         maximumFractionDigits: 0, 
@@ -37,8 +34,6 @@ const Coin = ({ coin }) => {
         style: 'currency',
         currency: currencyId.toUpperCase()
     }
-
-    let getCurrency = currencyId.toString()
 
     return (
         <div className="p-4">
@@ -58,13 +53,12 @@ const Coin = ({ coin }) => {
             <div className="mt-3">
                 <h2 className='text-2xl font-bold text-center'>
                     Current Price: {' '}
-                    {console.log(coin.market_data.current_price)}
-                    {(coin.market_data.current_price.inr * 1).toLocaleString('en-IN', optionsFull)}
+                    {(coin.market_data.current_price[currencyId] * 1).toLocaleString('en-IN', optionsFull)}
                 </h2>
             </div>
 
             <PriceChange 
-                market={coin.market_data}currencyId
+                market={coin.market_data}
             />
 
             <div className="flex gap-8 flex-col md:flex-row max-w-[1000px] mx-auto mt-8">

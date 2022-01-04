@@ -57,8 +57,4 @@ export const currencies = [
     {name: "xrp"}, 
     {name: "yfi"}, 
     {name: "zar"}, 
-    {name: "bits"},
-    {name: "link"},
-    {name: "sats"}
 ]
-

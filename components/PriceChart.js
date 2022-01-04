@@ -1,5 +1,5 @@
 import React from 'react'
-import { LineChart, Line, Tooltip } from 'recharts';
+import { LineChart, Line, YAxis } from 'recharts';
 
 const PriceChart = ({ sparkline, graphColor, GraphWidth, GraphHeight }) => {
     const baseValue = Math.min(sparkline)
@@ -12,7 +12,10 @@ const PriceChart = ({ sparkline, graphColor, GraphWidth, GraphHeight }) => {
 
     return (
         <LineChart width={GraphWidth} height={GraphHeight} data={sparklineObj}>
-            <Tooltip />
+            <YAxis 
+                domain={["dataMin", 'dataMax']}
+                hide={true}
+            />
             <Line 
                 type="monotone" 
                 dataKey="Price" 

@@ -1,37 +1,87 @@
 import React from 'react'
 import { LineChart, Line, Tooltip, YAxis, XAxis } from 'recharts';
 
-const PriceChartFull = ({ sparkline, GraphWidth, GraphHeight }) => {
-    const baseValue = Math.min(sparkline)
-
-    let sparklineObj = []
-
-    for(let i = 0; i <= sparkline.length; i++){
-        sparklineObj.push({Price: sparkline[i]})
+const PriceChartFull = ({ prices, GraphWidth, GraphHeight }) => {
+    const optionsFull = {
+        maximumFractionDigits: 4, 
+        minimumFractionDigits: 0,
+        style: 'currency',
+        currency: 'INR'
     }
 
-    const tickFormatter = value => {
-        const roundVal = Math.round((value * 10) / 10)
+    const dateFull = { 
+        weekday: 'short', 
+        day: 'numeric',
+        month: 'short', 
+        year: 'numeric',
+        hour: 'numeric',
+        minute: "numeric",
+        second: "numeric"
+    }
+
+    const dateShort = { 
+        day: 'numeric',
+        month: 'short'
+    }
+
+    let priceObj = prices.map(function(item) { 
+        return { 
+            date: item[0], 
+            price: item[1]
+        }; 
+    });
+
+    const CustomTooltip = ({ active, payload, label }) => {
+        if (active && payload && payload.length) {
+            return (
+                <div className="custom-tooltip backdrop-blur-sm shadow-sm bg-slate-50 p-2">
+                    <p className="intro font-semibold">
+                        {`Date : ${new Date(label).toLocaleDateString("en-US", dateFull)}`}
+                    </p>
+
+                    <p className="label">
+                        {`Price : ${payload[0].value.toLocaleString('en-IN', optionsFull)}`}
+                    </p>
+
+                </div>
+            );
+        }
+      
+        return null;
+    };
+
+    const tickPrice = value => {
+        const roundVal = value.toLocaleString('en-IN', optionsFull)
+
+        return roundVal
+    }
+
+    const tickDate = value => {
+        const roundVal = new Date(value).toLocaleDateString("en-US", dateShort);
 
         return roundVal
     }
 
     return (
-        <LineChart width={GraphWidth} height={GraphHeight} data={sparklineObj}>
-            <Tooltip />
+        <LineChart width={GraphWidth} height={GraphHeight} data={priceObj}>
+            <Tooltip 
+                content={<CustomTooltip />}
+            />
             <XAxis 
-                tickCount={7}
+                dataKey="date"
+                tickFormatter={tickDate}
+                tickSize={4}
             />
             <YAxis 
                 domain={["dataMin", 'dataMax']}
-                tickFormatter={tickFormatter}
+                tickFormatter={tickPrice}
+                tickSize={2}
             />
             <Line 
                 type="monotone" 
-                dataKey="Price" 
+                dataKey="price"
                 stroke="#389fff"
-                baseValue={baseValue}
-                strokeWidth={2}
+                strokeWidth={1}
                 dot={false} 
             />
         </LineChart>

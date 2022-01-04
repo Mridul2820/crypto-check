@@ -1,7 +1,6 @@
 import React from 'react'
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
-
 import { ResponsiveContainer } from 'recharts';
 
 const CoinMarket = dynamic(() => import('../../components/CoinMarket'));
@@ -15,18 +14,21 @@ const { SITE_URL } = process.env
 export async function getServerSideProps(context) {
     const { id } = context.query;
   
-    const res = await fetch(`https://api.coingecko.com/api/v3/coins/${id}?sparkline=true&tickers=false&developer_data=false`);
-  
-    const data = await res.json();
+    const resAll = await fetch(`https://api.coingecko.com/api/v3/coins/${id}?tickers=false&developer_data=false`);
+    const dataAll = await resAll.json();
+
+    const resPrice = await fetch(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=inr&days=7`);
+    const dataPrice = await resPrice.json();
   
     return {
         props: {
-            coin: data
+            coin: dataAll,
+            price: dataPrice
         }
     };
 }
 
-const Coin = ({ coin }) => {
+const Coin = ({ coin, price }) => {
     const SEO = {
         title: `${coin?.name} (${coin.symbol.toUpperCase()}) info, price today, market cap`,
         description: `View ${coin?.name} crypto price and chart, ${coin.symbol.toUpperCase()} market cap, circulating supply, latest news and more.`,
@@ -72,13 +74,16 @@ const Coin = ({ coin }) => {
                 />
             </div>
 
-            <ResponsiveContainer width="100%" height="100%" className="flex justify-center mt-8 shadow-bs2 max-w-[1000px] mx-auto rounded-md bg-white p-3 select-none">
-                <PriceChartFull 
-                    sparkline={coin.market_data?.sparkline_7d?.price}
-                    GraphWidth={800}
-                    GraphHeight={350}
-                />
-            </ResponsiveContainer>
+            <div className="mt-8 shadow-bs2 max-w-[1000px] mx-auto rounded-md bg-white p-3 select-none">
+                <p className='font-semibold text-lg mb-5 text-center'>{coin.name} price in last 7 days</p>
+                <ResponsiveContainer width="100%" height="100%" className="flex justify-center">
+                    <PriceChartFull 
+                        prices={price?.prices}
+                        GraphWidth={800}
+                        GraphHeight={350}
+                    />
+                </ResponsiveContainer>
+            </div>
         </div>
     )
 }

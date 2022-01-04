@@ -18,7 +18,7 @@ export const getStaticProps = async () => {
 
 const index = ({ filteredCoins }) => {
     return (
-        <div className="px-5 flex flex-col pb-4 min-h-[50vh]">
+        <div className="px-5 flex flex-col pb-4 min-h-[50vh] overflow-x-hidden">
             <div className="grid gap-2 md:gap-4 grid-cols-gridcoinsm md:grid-cols-gridcoin items-center sticky z-10 top-0 px-0 sm:px-3 py-4 text-gray-700 border-b-[1px] border-gray-600 bg-slate-50">
                 <span className="">#</span>
                 <span className="">Name</span>

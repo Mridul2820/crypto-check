@@ -3,12 +3,12 @@ import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
 
 import { ResponsiveContainer } from 'recharts';
-import PriceChart from '../../components/PriceChart';
 
 const CoinMarket = dynamic(() => import('../../components/CoinMarket'));
 const PriceChange = dynamic(() => import('../../components/PriceChange'));
 const SocialMarket = dynamic(() => import('../../components/SocialMarket'));
 const CoinDetail = dynamic(() => import('../../components/CoinDetail'));
+const PriceChartFull = dynamic(() => import('../../components/PriceChartFull'));
 
 const { SITE_URL } = process.env
 
@@ -72,12 +72,11 @@ const Coin = ({ coin }) => {
                 />
             </div>
 
-            <ResponsiveContainer width="100%" height="100%" className="flex justify-center mt-8 shadow-bs2 max-w-[1000px] mx-auto rounded-md bg-white">
-                <PriceChart 
+            <ResponsiveContainer width="100%" height="100%" className="flex justify-center mt-8 shadow-bs2 max-w-[1000px] mx-auto rounded-md bg-white p-3">
+                <PriceChartFull 
                     sparkline={coin.market_data?.sparkline_7d?.price}
-                    // graphColor={coin.price_change_percentage_7d_in_currency}
                     GraphWidth={800}
-                    GraphHeight={300}
+                    GraphHeight={350}
                 />
             </ResponsiveContainer>
         </div>

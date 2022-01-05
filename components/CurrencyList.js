@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useRecoilState } from 'recoil';
 import { currencyState } from '../atoms/currencyAtom';
 import { currencies } from '../data/currencies'
+import { RiCloseCircleFill } from 'react-icons/ri'
 
 const CurrencyItems = ({ search, list, setCurDropdown }) => {
     const [currencyId, setcurrencyId] = useRecoilState(currencyState);
@@ -16,11 +17,11 @@ const CurrencyItems = ({ search, list, setCurDropdown }) => {
     })
 
     return (
-        <div className="grid gap-4 grid-cols-2 md:grid-cols-3">
+        <div className="grid gap-3 md:gap-4 grid-cols-2 md:grid-cols-3">
             {filterList.map(currency => (
                 <div 
                     key={currency.code}
-                    className={`flex gap-2 hover:bg-slate-100 py-1 px-2 cursor-pointer rounded-md ${currencyId === currency.code && 'bg-slate-200'}`} 
+                    className={`flex gap-2 hover:bg-slate-100 py-1 px-2 cursor-pointer rounded-md select-none ${currencyId === currency.code && 'bg-slate-200'}`} 
                     onClick={() => getCurrency(currency.code)}
                 >
                     <span className='uppercase text-slate-500'>{currency.code}</span>
@@ -35,7 +36,12 @@ const CurrencyList = ({ setCurDropdown }) => {
     const [search, setSearch] = useState('')
 
     return (
-        <div className='bg-white shadow-bs3 p-5 absolute top-16 right-4 z-50 rounded-md h-full min-h-[calc(100vh-120px)] overflow-y-scroll'>
+        <div className='bg-white shadow-bs3 py-6 px-2 md:px-4 absolute top-16 right-4 left-4 md:left-[unset] z-50 rounded-md h-full min-h-[calc(100vh-120px)] overflow-y-scroll md:min-w-[65vw]'>
+            <RiCloseCircleFill 
+                className='absolute top-5 right-5 cursor-pointer'
+                onClick={() => setCurDropdown(false)}
+                size={24}
+            />
             <div className="flex justify-center items-center mb-3">
                 <input 
                     type="text" 

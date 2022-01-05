@@ -13,7 +13,7 @@ const CoinRow = ({ coin, index }) => {
     }
 
     const priceLong = {
-        maximumFractionDigits: 4, 
+        maximumFractionDigits: 5, 
         minimumFractionDigits: 0,
         style: 'currency',
         currency: 'INR'

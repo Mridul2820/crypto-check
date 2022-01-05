@@ -35,11 +35,13 @@ const Navbar = () => {
             </Link>
 
             <div 
-                className="flex gap-1 items-center cursor-pointer"
+                className="flex gap-1 items-center cursor-pointer select-none"
                 onClick={() => setCurDropdown(!curDropdown)}
             >
                 <span className="uppercase">{currencyId}</span>
-                <IoMdArrowDropdown />
+                <IoMdArrowDropdown 
+                    size={21}
+                />
             </div>
 
             {curDropdown && 

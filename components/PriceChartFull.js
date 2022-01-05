@@ -3,7 +3,7 @@ import { LineChart, Line, Tooltip, YAxis, XAxis } from 'recharts';
 
 const PriceChartFull = ({ prices, GraphWidth, GraphHeight }) => {
     const priceLong = {
-        maximumFractionDigits: 4, 
+        maximumFractionDigits: 5, 
         minimumFractionDigits: 0,
         style: 'currency',
         currency: 'INR'
@@ -58,7 +58,7 @@ const PriceChartFull = ({ prices, GraphWidth, GraphHeight }) => {
     };
 
     const tickPrice = value => {
-        const roundVal = value.toLocaleString('en-IN', priceShort)
+        let roundVal = value < 0 ? value.toLocaleString('en-IN', priceShort) : value.toLocaleString('en-IN', priceLong)
 
         return roundVal
     }

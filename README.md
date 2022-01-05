@@ -22,7 +22,7 @@
 <br />
 <br />
 
-# What it does 🤔
+## What it does 🤔
 - Cryptocurrencies list by the order of market cap
 - Latest Price, Market Cap, Price changes (1H, 24H, 7D) and price change graphsin the list
 - Updates the list, prices, price updates and graphs in every minute
@@ -30,15 +30,37 @@
 - Socail info of the crypto like Website, Explorers, Community and Source Code also displayed
 - User can also chnage the currency from currency list
 
-# Tech Stack
+## Tech Stack 👾
 - Next JS
 - Tailwind
 - Recoil
 - Recharts
 - Coingecko(API)
 
-# Run Locally
+## Prerequisites '✔
+Required to install and run the software:
+* [Node JS 14+](https://nodejs.org/)
+* [NPM](https://www.npmjs.com/get-npm)
+
+## Run Locally 🤠
+1. Clone the respository locally
 ```
-1. npm install
-2. npm run dev
+git clone https://github.com/Mridul2820/crypto-check.git
 ```
+2. Create a `.env` file in the root directory
+```
+SITE_URL = <YOUR_URL_FOR_APP>
+```
+3. Install the `node_modules`
+```
+npm install
+```
+4. Start the Server
+```
+npm run dev
+```
+
+## How to contribute? 💻
+<a href="CONTRIBUTING.md">Contributing Guide</a>
+
+## All the best! 🥇

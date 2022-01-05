@@ -1,9 +1,9 @@
 export default {
     title: "Crypto Check - Get all details about the cryptocurrencies",
-    description: "Get all data about market cap, circulating supply, latest news of cryptocurrencies",
+    description: "Get all data about prices, market cap, circulating supply, price graph of cryptocurrencies",
     openGraph: {
         title: "Crypto Check - Get all details about the cryptocurrencies",
-        description: "Get all data about market cap, circulating supply, latest news of cryptocurrencies",
+        description: "Get all data about prices, market cap, circulating supply, price graph of cryptocurrencies",
         type: 'website',
         locale: 'en_IN',
         images: [

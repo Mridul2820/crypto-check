@@ -1,6 +1,6 @@
 # Contributing to Cyrpto Check 💥
 
-## Pull Request Guidelines
+Pull Request Guidelines
 
 1. [Fork][fork-link] the repository [crypto-check](repo-link).
 2. [Clone][clone-link] your new fork of the repository locally.

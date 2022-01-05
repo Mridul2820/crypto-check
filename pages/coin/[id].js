@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
 import { ResponsiveContainer } from 'recharts';
+import { useRouter } from 'next/router';
+import { currencyState } from '../../atoms/currencyAtom';
+import { useRecoilValue } from 'recoil';
+import axios from 'axios';
+import Loader from '../../components/Loader';
 
 const CoinMarket = dynamic(() => import('../../components/CoinMarket'));
 const PriceChange = dynamic(() => import('../../components/PriceChange'));
@@ -11,33 +16,58 @@ const PriceChartFull = dynamic(() => import('../../components/PriceChartFull'));
 
 const { SITE_URL } = process.env
 
-export async function getServerSideProps(context) {
-    const { id } = context.query;
-  
-    const resAll = await fetch(`https://api.coingecko.com/api/v3/coins/${id}?tickers=false&developer_data=false`);
-    const dataAll = await resAll.json();
+const Coin = () => {
+    const router = useRouter()
+    const { id } = router.query
 
-    const resPrice = await fetch(`https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=inr&days=7`);
-    const dataPrice = await resPrice.json();
-  
-    return {
-        props: {
-            coin: dataAll,
-            price: dataPrice
-        }
-    };
-}
+    const [coin, setCoin] = useState([])
+    const [price, setPrice] = useState([])
+    const [loading, setLoading] = useState(true)
+    const currencyId = useRecoilValue(currencyState);
 
-const Coin = ({ coin, price }) => {
+    const getCoinData = async() => {
+        const { data } = await axios.get(
+            `https://api.coingecko.com/api/v3/coins/${id}?tickers=false&developer_data=false`
+        );
+        console.log(data);
+        setCoin(data)
+        setLoading(false)
+    }
+
+    const getPriceData = async() => {
+        const { data } = await axios.get(
+            `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currencyId}&days=7`
+        );
+        setPrice(data)
+    }
+
+    useEffect(() => {
+        if(!router.isReady) return;
+        getCoinData()
+        const interval = setInterval(() => {
+            getCoinData()
+        }, 60000);
+        return () => clearInterval(interval);
+    }, [router.isReady]);
+
+    useEffect(() => {
+        if(!router.isReady) return;
+        getPriceData()
+        const interval = setInterval(() => {
+            getPriceData()
+        }, 60000);
+        return () => clearInterval(interval);
+    }, [currencyId, router.isReady]);
+
     const SEO = {
-        title: `${coin?.name} (${coin.symbol.toUpperCase()}) info, price today, market cap`,
-        description: `View ${coin?.name} crypto price and chart, ${coin.symbol.toUpperCase()} market cap, circulating supply, latest news and more.`,
+        title: `${coin?.name} (${coin?.symbol?.toUpperCase()}) info, price today, market cap`,
+        description: `View ${coin?.name} crypto price and chart, ${coin?.symbol?.toUpperCase()} market cap, circulating supply, latest news and more.`,
         canonical: `${SITE_URL}/coin/${coin?.id}`,
 
         openGraph: {
-            title: `${coin?.name} (${coin.symbol.toUpperCase()}) info, price today, market cap`,
+            title: `${coin?.name} (${coin?.symbol?.toUpperCase()}) info, price today, market cap`,
             url: `${SITE_URL}/coin/${coin?.id}`,
-            description: `View ${coin?.name} crypto price and chart, ${coin.symbol.toUpperCase()} market cap, circulating supply, latest news and more.`,
+            description: `View ${coin?.name} crypto price and chart, ${coin?.symbol?.toUpperCase()} market cap, circulating supply, latest news and more.`,
             images: [
                 {
                     url: coin?.image?.large,
@@ -48,6 +78,8 @@ const Coin = ({ coin, price }) => {
             ],
         }
     };
+
+    if(loading) return <Loader />
 
     return (
         <div className="p-4 min-h-[calc(100vh-112px)] bg-light-blue mb-5">

@@ -17,7 +17,7 @@ const CoinDetail = ({ coin }) => {
         <>
             <div className="flex items-center gap-x-3 justify-center">
                 <Image 
-                    src={coin.image.large}
+                    src={coin?.image?.large}
                     alt={coin.name}
                     height={36}
                     width={36}
@@ -31,7 +31,7 @@ const CoinDetail = ({ coin }) => {
             <div className="mt-3">
                 <h2 className='text-2xl font-bold text-center'>
                     Current Price: {' '}
-                    {(coin.market_data.current_price[currencyId] * 1).toLocaleString('en-IN', priceLong)}
+                    {(coin?.market_data?.current_price[currencyId] * 1).toLocaleString('en-IN', priceLong)}
                 </h2>
             </div>
         </>

@@ -1,19 +1,23 @@
 import React from 'react'
 import { LineChart, Line, Tooltip, YAxis, XAxis } from 'recharts';
+import { useRecoilValue } from 'recoil';
+import { currencyState } from '../atoms/currencyAtom';
 
 const PriceChartFull = ({ prices, GraphWidth, GraphHeight }) => {
+    const currencyId = useRecoilValue(currencyState);
+
     const priceLong = {
         maximumFractionDigits: 5, 
         minimumFractionDigits: 0,
         style: 'currency',
-        currency: 'INR'
+        currency: currencyId.toUpperCase()
     }
 
     const priceShort = {
         maximumFractionDigits: 0, 
         minimumFractionDigits: 0,
         style: 'currency',
-        currency: 'INR'
+        currency: currencyId.toUpperCase()
     }
 
     const dateFull = { 
@@ -31,7 +35,7 @@ const PriceChartFull = ({ prices, GraphWidth, GraphHeight }) => {
         month: 'short'
     }
 
-    let priceObj = prices.map(function(item) { 
+    let priceObj = prices?.map(function(item) { 
         return { 
             date: item[0], 
             price: item[1]
@@ -58,7 +62,7 @@ const PriceChartFull = ({ prices, GraphWidth, GraphHeight }) => {
     };
 
     const tickPrice = value => {
-        let roundVal = value < 0 ? value.toLocaleString('en-IN', priceShort) : value.toLocaleString('en-IN', priceLong)
+        let roundVal = value > 0 ? value.toLocaleString('en-IN', priceShort) : value.toLocaleString('en-IN', priceLong)
 
         return roundVal
     }
@@ -90,7 +94,7 @@ const PriceChartFull = ({ prices, GraphWidth, GraphHeight }) => {
                 dataKey="price"
                 stroke="#389fff"
                 strokeWidth={1}
-                dot={true} 
+                dot={false} 
             />
         </LineChart>
     )

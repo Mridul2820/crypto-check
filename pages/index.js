@@ -1,25 +1,32 @@
+import React, { useEffect, useState } from 'react'
 import { NextSeo } from 'next-seo';
-import React from 'react'
 import CoinRow from '../components/CoinRow';
+import axios from 'axios';
+import { useRecoilValue } from 'recoil';
+import { currencyState } from '../atoms/currencyAtom';
 
 const { SITE_URL } = process.env
 
-export const getStaticProps = async () => {
-    const res = await fetch(
-        'https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_desc&per_page=50&page=1&price_change_percentage=1h,24h,7d&sparkline=true'
-    );
-  
-    const filteredCoins = await res.json();
-  
-    return {
-        props: {
-            filteredCoins
-        },
-        revalidate: 60
-    };
-};
+const index = () => {
+    const [updatedCoins, setUpdatedCoins] = useState([])
+    const currencyId = useRecoilValue(currencyState);
 
-const index = ({ filteredCoins }) => {
+    const getCoins = async() => {
+        const { data } = await axios.get(
+            `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currencyId}&order=market_cap_desc&per_page=50&page=1&price_change_percentage=1h,24h,7d&sparkline=true`
+        );
+
+        setUpdatedCoins(data)
+    }
+
+    useEffect(() => {
+        getCoins()
+        const interval = setInterval(() => {
+            getCoins()
+        }, 60000);
+        return () => clearInterval(interval);
+    }, [currencyId]);
+
     const SEO = {
         canonical: SITE_URL
     };
@@ -33,12 +40,12 @@ const index = ({ filteredCoins }) => {
                 <img 
                     src="./assets/bitcoin-big.svg"
                     alt="logo" 
-                    className='absolute top-4 left-5 w-20 hover:scale-105 transition-all duration-500 ease-out'
+                    className='absolute top-4 left-5 w-20 hover:scale-105 transition-all duration-500 ease-out select-none'
                 />
                 <img 
                     src="./assets/ethereum-bubble.svg"
                     alt="logo" 
-                    className='absolute top-4 -right-16 w-72 hover:scale-105 transition-all duration-500 ease-out'
+                    className='absolute top-4 -right-16 w-72 hover:scale-105 transition-all duration-500 ease-out select-none'
                 />
             </div>
 
@@ -55,8 +62,8 @@ const index = ({ filteredCoins }) => {
                     <span className="hidden md:block">Last 7 Days</span>
                 </div>
 
-                <div className="bg-white z-30">
-                    {filteredCoins?.map((coin, index) => (
+                <div className="bg-white z-30 min-h-screen">
+                    {updatedCoins?.map((coin, index) => (
                         <CoinRow 
                             key={coin.id}
                             coin={coin}

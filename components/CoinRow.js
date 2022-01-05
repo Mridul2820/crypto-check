@@ -1,22 +1,25 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { useRecoilValue } from 'recoil'
+import { currencyState } from '../atoms/currencyAtom'
 import PriceChart from './PriceChart'
 
 const CoinRow = ({ coin, index }) => {
+    const currencyId = useRecoilValue(currencyState);
 
     const priceShort = {
         maximumFractionDigits: 0, 
         minimumFractionDigits: 0,
         style: 'currency',
-        currency: 'INR'
+        currency: currencyId.toUpperCase()
     }
 
     const priceLong = {
         maximumFractionDigits: 5, 
         minimumFractionDigits: 0,
         style: 'currency',
-        currency: 'INR'
+        currency: currencyId.toUpperCase()
     }
 
     return (

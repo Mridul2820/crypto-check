@@ -29,7 +29,6 @@ const Coin = () => {
         const { data } = await axios.get(
             `https://api.coingecko.com/api/v3/coins/${id}?tickers=false&developer_data=false`
         );
-        console.log(data);
         setCoin(data)
         setLoading(false)
     }

@@ -4,12 +4,14 @@ import CoinRow from '../components/CoinRow';
 import axios from 'axios';
 import { useRecoilValue } from 'recoil';
 import { currencyState } from '../atoms/currencyAtom';
+import Loader from '../components/Loader';
 
 const { SITE_URL } = process.env
 
 const Home = () => {
     const [updatedCoins, setUpdatedCoins] = useState([])
     const currencyId = useRecoilValue(currencyState);
+    const [loading, setLoading] = useState(true)
 
     const getCoins = async() => {
         const { data } = await axios.get(
@@ -17,6 +19,7 @@ const Home = () => {
         );
 
         setUpdatedCoins(data)
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -31,6 +34,8 @@ const Home = () => {
     const SEO = {
         canonical: SITE_URL
     };
+
+    if(loading) return <Loader />
 
     return (
         <div className="px-5 flex flex-col pb-4 min-h-[50vh] shadow-lg relative pt-24">

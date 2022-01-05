@@ -17,7 +17,7 @@ const CurrencyItems = ({ search, list, setCurDropdown }) => {
     })
 
     return (
-        <div className="grid gap-3 md:gap-4 grid-cols-2 md:grid-cols-3">
+        <div className="grid gap-3 md:gap-4 grid-cols-2 md:grid-cols-3 overflow-hidden">
             {filterList.map(currency => (
                 <div 
                     key={currency.code}

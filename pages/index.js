@@ -7,7 +7,7 @@ import { currencyState } from '../atoms/currencyAtom';
 
 const { SITE_URL } = process.env
 
-const index = () => {
+const Home = () => {
     const [updatedCoins, setUpdatedCoins] = useState([])
     const currencyId = useRecoilValue(currencyState);
 
@@ -25,6 +25,7 @@ const index = () => {
             getCoins()
         }, 60000);
         return () => clearInterval(interval);
+        // eslint-disable-next-line
     }, [currencyId]);
 
     const SEO = {
@@ -76,4 +77,4 @@ const index = () => {
     )
 }
 
-export default index
+export default Home

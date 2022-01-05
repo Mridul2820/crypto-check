@@ -48,6 +48,7 @@ const Coin = () => {
             getCoinData()
         }, 60000);
         return () => clearInterval(interval);
+        // eslint-disable-next-line
     }, [router.isReady]);
 
     useEffect(() => {
@@ -57,6 +58,7 @@ const Coin = () => {
             getPriceData()
         }, 60000);
         return () => clearInterval(interval);
+        // eslint-disable-next-line
     }, [currencyId, router.isReady]);
 
     const SEO = {

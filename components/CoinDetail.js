@@ -6,7 +6,7 @@ import { currencyState } from '../atoms/currencyAtom';
 const CoinDetail = ({ coin }) => {
     const currencyId = useRecoilValue(currencyState);
 
-    const optionsFull = {
+    const priceShort = {
         maximumFractionDigits: 0, 
         minimumFractionDigits: 0,
         style: 'currency',
@@ -31,7 +31,7 @@ const CoinDetail = ({ coin }) => {
             <div className="mt-3">
                 <h2 className='text-2xl font-bold text-center'>
                     Current Price: {' '}
-                    {(coin.market_data.current_price[currencyId] * 1).toLocaleString('en-IN', optionsFull)}
+                    {(coin.market_data.current_price[currencyId] * 1).toLocaleString('en-IN', priceShort)}
                 </h2>
             </div>
         </>

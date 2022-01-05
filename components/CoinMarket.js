@@ -5,7 +5,7 @@ import { currencyState } from '../atoms/currencyAtom';
 const CoinMarket = ({ coinName, coinDate, coinMarket }) => {
     const currencyId = useRecoilValue(currencyState);
 
-    const optionsFull = {
+    const priceShort = {
         maximumFractionDigits: 0, 
         minimumFractionDigits: 0,
         style: 'currency',
@@ -27,7 +27,7 @@ const CoinMarket = ({ coinName, coinDate, coinMarket }) => {
                 <div className='flex justify-between py-2 border-b-[1px] border-slate-300'>
                     <span className='text-slate-700'>Market Cap:</span>
                     <span className='font-semibold'>
-                        {(coinMarket?.market_cap[currencyId] * 1).toLocaleString('en-IN', optionsFull)}
+                        {(coinMarket?.market_cap[currencyId] * 1).toLocaleString('en-IN', priceShort)}
                     </span>
                 </div>
             }
@@ -35,7 +35,7 @@ const CoinMarket = ({ coinName, coinDate, coinMarket }) => {
                 <div className='flex justify-between py-2 border-b-[1px] border-slate-300'>
                     <span className='text-slate-700'>Fully Diluted Valuation:</span> 
                     <span className='font-semibold'>
-                        {(coinMarket?.fully_diluted_valuation[currencyId] * 1)?.toLocaleString('en-IN', optionsFull)}
+                        {(coinMarket?.fully_diluted_valuation[currencyId] * 1)?.toLocaleString('en-IN', priceShort)}
                     </span>
                 </div>
             }

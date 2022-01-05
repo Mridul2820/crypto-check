@@ -5,14 +5,14 @@ import PriceChart from './PriceChart'
 
 const CoinRow = ({ coin, index }) => {
 
-    const optionsFull = {
+    const priceShort = {
         maximumFractionDigits: 0, 
         minimumFractionDigits: 0,
         style: 'currency',
         currency: 'INR'
     }
 
-    const optionsSingle = {
+    const priceLong = {
         maximumFractionDigits: 4, 
         minimumFractionDigits: 0,
         style: 'currency',
@@ -37,10 +37,10 @@ const CoinRow = ({ coin, index }) => {
                     {coin.symbol}
                 </small>
                 <span>
-                    {(coin.current_price * 1).toLocaleString('en-IN', optionsSingle)}
+                    {(coin.current_price * 1).toLocaleString('en-IN', priceLong)}
                 </span>
                 <span className="hidden md:inline-block">
-                    {(coin.market_cap * 1).toLocaleString('en-IN', optionsFull)}
+                    {(coin.market_cap * 1).toLocaleString('en-IN', priceShort)}
                 </span>
                 <span className={`${coin.price_change_percentage_1h_in_currency > 0 ? 'text-green-600' : 'text-red-600'}`}>
                     {Math.round(coin.price_change_percentage_1h_in_currency * 10) / 10}%

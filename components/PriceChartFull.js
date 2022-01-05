@@ -2,8 +2,15 @@ import React from 'react'
 import { LineChart, Line, Tooltip, YAxis, XAxis } from 'recharts';
 
 const PriceChartFull = ({ prices, GraphWidth, GraphHeight }) => {
-    const optionsFull = {
+    const priceLong = {
         maximumFractionDigits: 4, 
+        minimumFractionDigits: 0,
+        style: 'currency',
+        currency: 'INR'
+    }
+
+    const priceShort = {
+        maximumFractionDigits: 0, 
         minimumFractionDigits: 0,
         style: 'currency',
         currency: 'INR'
@@ -40,7 +47,7 @@ const PriceChartFull = ({ prices, GraphWidth, GraphHeight }) => {
                     </p>
 
                     <p className="label">
-                        {`Price : ${payload[0].value.toLocaleString('en-IN', optionsFull)}`}
+                        {`Price : ${payload[0].value.toLocaleString('en-IN', priceLong)}`}
                     </p>
 
                 </div>
@@ -51,7 +58,7 @@ const PriceChartFull = ({ prices, GraphWidth, GraphHeight }) => {
     };
 
     const tickPrice = value => {
-        const roundVal = value.toLocaleString('en-IN', optionsFull)
+        const roundVal = value.toLocaleString('en-IN', priceShort)
 
         return roundVal
     }
@@ -76,6 +83,7 @@ const PriceChartFull = ({ prices, GraphWidth, GraphHeight }) => {
                 domain={["dataMin", 'dataMax']}
                 tickFormatter={tickPrice}
                 tickSize={2}
+                padding={{ top: 10, bottom: 10 }}
             />
             <Line 
                 type="monotone" 

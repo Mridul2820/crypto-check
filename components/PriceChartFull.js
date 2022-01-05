@@ -90,7 +90,7 @@ const PriceChartFull = ({ prices, GraphWidth, GraphHeight }) => {
                 dataKey="price"
                 stroke="#389fff"
                 strokeWidth={1}
-                dot={false} 
+                dot={true} 
             />
         </LineChart>
     )

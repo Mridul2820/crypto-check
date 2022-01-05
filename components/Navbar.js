@@ -1,16 +1,26 @@
+import React, { useState } from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react'
-import { useRecoilState } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { currencyState } from '../atoms/currencyAtom';
-import { currencies } from '../data/currencies'
 import Logo from '../public/logo.png'
+import CurrencyList from './CurrencyList';
+import { IoMdArrowDropdown } from 'react-icons/io'
 
 const Navbar = () => {
-    const [currencyId, setcurrencyId] = useRecoilState(currencyState);
+    const currencyId = useRecoilValue(currencyState);
+    const [curDropdown, setCurDropdown] = useState(false)
+
+    if (typeof document !== "undefined") {
+        if(curDropdown){
+            document.body.style.overflowY = "hidden"
+        } else{
+            document.body.style.overflowY = "scroll"
+        }
+    }
 
     return (
-        <div className='flex items-center justify-between h-16 px-4 py-2 shadow-md border-b-[1px] border-slate-300'>
+        <div className='relative flex items-center justify-between h-16 px-4 py-2 shadow-md border-b-[1px] border-slate-300'>
             <Link href="/">
                 <a className='p-1 animate-rotate-slow'>
                     <Image
@@ -24,17 +34,20 @@ const Navbar = () => {
                 </a>
             </Link>
 
-            <select
-                value={currencyId}
-                onChange={e => setcurrencyId(e.target.value)}
-                className='border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:outline-none'
+            <div 
+                className="flex gap-1 items-center cursor-pointer"
+                onClick={() => setCurDropdown(!curDropdown)}
             >
-                {currencies.map(currency => (
-                    <option key={currency.name} value={currency.name}>
-                        {currency.name.toUpperCase()}
-                    </option>
-                ))}
-            </select>
+                <span className="uppercase">{currencyId}</span>
+                <IoMdArrowDropdown />
+            </div>
+
+            {curDropdown && 
+                <CurrencyList 
+                    curDropdown={curDropdown} 
+                    setCurDropdown={setCurDropdown}
+                />
+            }
         </div>
     )
 }

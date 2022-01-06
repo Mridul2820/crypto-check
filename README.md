@@ -10,7 +10,7 @@
 <br />
 
 <div align="center">
-    <sub>Quick Links</sub>
+    <p>Quick Links</p>
     <br />
     <a href="CONTRIBUTING.md">Contributing Guide</a> •
     <a href="https://github.com/Mridul2820/crypto-check/issues">Issues</a> •
@@ -23,7 +23,7 @@
 <br />
 
 ## What it does 🤔
-- Cryptocurrencies list by the order of market cap
+- Shows a list of Cryptocurrencies by the order of market cap
 - Latest Price, Market Cap, Price changes (1H, 24H, 7D) and price change graphsin the list
 - Updates the list, prices, price updates and graphs in every minute
 - Shows a detaild chart of price changes in detail page
@@ -36,6 +36,11 @@
 - Recoil
 - Recharts
 - Coingecko(API)
+
+## Demo 🌍
+This app is Deployed to Vercel
+<br />
+[View Demo](Cryptocurrencies)
 
 ## Prerequisites '✔
 Required to install and run the software:

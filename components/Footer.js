@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
     return (
         <div className='p-3 flex justify-center bg-slate-200'>
-            &copy; {new Date().getFullYear()} Made with ❤ by
+            &copy; {new Date().getFullYear()} by
             <a 
                 className='ml-1 font-semibold' 
                 href="https://www.mridul.tech/"
@@ -11,6 +11,16 @@ const Footer = () => {
                 rel='noreferrer'
             >
                 Mridul
+            </a>
+            .{' '}
+            Made with ❤ {'& '}
+            <a 
+                className='ml-1 font-semibold' 
+                href="https://www.mridul.tech/"
+                target='_blank'
+                rel='noreferrer'
+            >
+                {'<Code/>'}
             </a>
         </div>
     )

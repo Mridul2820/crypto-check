@@ -13,6 +13,7 @@ const PriceChange = dynamic(() => import('../../components/PriceChange'));
 const SocialMarket = dynamic(() => import('../../components/SocialMarket'));
 const CoinDetail = dynamic(() => import('../../components/CoinDetail'));
 const PriceChartFull = dynamic(() => import('../../components/PriceChartFull'));
+const CoinDescription = dynamic(() => import('../../components/CoinDescription'));
 
 const { SITE_URL } = process.env
 
@@ -27,7 +28,7 @@ const Coin = () => {
 
     const getCoinData = async() => {
         const { data } = await axios.get(
-            `https://api.coingecko.com/api/v3/coins/${id}?tickers=false&developer_data=false`
+            `https://api.coingecko.com/api/v3/coins/${id}?tickers=false&developer_data=false&community_data=false&localization=false`
         );
         setCoin(data)
         setLoading(false)
@@ -107,6 +108,7 @@ const Coin = () => {
                 />
             </div>
 
+            {price?.prices &&
             <div className="mt-8 shadow-bs2 max-w-[1000px] mx-auto rounded-md bg-white p-3 select-none">
                 <p className='font-semibold text-lg mb-5 text-center'>{coin.name} price in last 7 days</p>
                 <ResponsiveContainer width="100%" height="100%" className="flex justify-center">
@@ -117,6 +119,12 @@ const Coin = () => {
                     />
                 </ResponsiveContainer>
             </div>
+            }
+
+            <CoinDescription 
+                name={coin.name}
+                description={coin.description.en}
+            />
         </div>
     )
 }

@@ -9,6 +9,9 @@ const CurrencyItems = ({ search, list, setCurDropdown }) => {
 
     const getCurrency = (code) => {
         setcurrencyId(code)
+        if(typeof window !== 'undefined'){
+            localStorage.setItem('currency', code)
+        }
         setCurDropdown(false)
     }
 

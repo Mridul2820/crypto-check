@@ -55,7 +55,10 @@ git clone https://github.com/Mridul2820/crypto-check.git
 2. Create a `.env` file in the root directory
 ```
 SITE_URL = <YOUR_URL_FOR_APP>
+THEGUARDIAN_API_KEY = <THEGUARDIAN_API_KEY>
 ```
+Get an API Key from [theguardian](https://open-platform.theguardian.com/)
+
 3. Install the `node_modules`
 ```
 npm install

@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRecoilValue } from 'recoil';
-import { currencyState } from '../atoms/currencyAtom';
-import Logo from '../public/logo.png'
-import CurrencyList from './CurrencyList';
+import { currencyState } from '../../atoms/currencyAtom';
+import Logo from '../../public/logo.png'
+import CurrencyList from '../CurrencyList';
 import { IoMdArrowDropdown } from 'react-icons/io'
 
 const Navbar = () => {

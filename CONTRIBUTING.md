@@ -19,7 +19,7 @@ cd crypto-check
 ```
 git checkout -b <YOUR_BRANCH_NAME>
 ```
-6. [Run it Locally](run-locally)
+6. [Run it Locally](https://github.com/Mridul2820/crypto-check#run-locally-)
 7. Add yor changes
 ```
 git add .
@@ -40,5 +40,4 @@ git push origin <YOUR_BRANCH_NAME>
 [clone-link]: <https://help.github.com/articles/cloning-a-repository/>
 [fork-link]: <http://guides.github.com/activities/forking/>
 [syncing-link]: <https://help.github.com/articles/syncing-a-fork>
-[run-locally]: <https://github.com/Mridul2820/crypto-check#run-locally/>
 [pull-request]: <https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request/>

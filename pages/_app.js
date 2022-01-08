@@ -8,7 +8,7 @@ import SEO from '../next-seo.config'
 // Components
 import Navbar from '../components/layout/Navbar'
 import Footer from '../components/layout/Footer'
-import ScrollTop from '../components/ScrollTop'
+import ScrollTop from '../components/widget/ScrollTop'
 
 function MyApp({ Component, pageProps }) {
     return (

@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
-import { currencyState } from '../../atoms/currencyAtom';
-import { useRecoilValue } from 'recoil';
 import axios from 'axios';
-import Loader from '../../components/Loader';
+
+import { useRecoilValue } from 'recoil';
+import { currencyState } from '../../atoms/currencyAtom';
 
 const CoinMarket = dynamic(() => import('../../components/detail/CoinMarket'));
 const PriceChange = dynamic(() => import('../../components/detail/PriceChange'));
@@ -13,6 +13,8 @@ const SocialMarket = dynamic(() => import('../../components/detail/SocialMarket'
 const CoinDetail = dynamic(() => import('../../components/detail/CoinDetail'));
 const PriceChartFull = dynamic(() => import('../../components/detail/PriceChartFull'));
 const CoinDescription = dynamic(() => import('../../components/detail/CoinDescription'));
+
+import Loader from '../../components/widget/Loader';
 
 const { SITE_URL } = process.env
 // const { THEGUARDIAN_API_KEY } = process.env

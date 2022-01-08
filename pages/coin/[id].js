@@ -120,10 +120,12 @@ const Coin = () => {
             </div>
             }
 
-            <CoinDescription 
-                name={coin.name}
-                description={coin.description.en}
-            />
+            {coin.description.en &&
+                <CoinDescription 
+                    name={coin.name}
+                    description={coin.description.en}
+                />
+            }
         </div>
     )
 }

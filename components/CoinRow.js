@@ -24,7 +24,7 @@ const CoinRow = ({ coin, index }) => {
 
     return (
         <Link href={`/coin/${coin.id}`}>
-            <a className="grid gap-2 md:gap-4 grid-cols-gridcoinsm md:grid-cols-gridcoin items-center mt-0 px-2 sm:px-3 h-12 md:h-16 hover:bg-slate-100 transition-all hover:shadow-md cursor-pointer border-b-[1px] border-gray-300">
+            <a className="grid gap-2 md:gap-4 grid-cols-gridcoinsm md:grid-cols-gridcoin items-center mt-0 px-3 sm:px-4 min-h-[48px] md:h-16 hover:bg-slate-100 transition-all hover:shadow-md cursor-pointer border-b-[1px] border-gray-300">
                 <span>{index + 1}.</span>
                 <span className="flex gap-2 items-center">
                     <Image

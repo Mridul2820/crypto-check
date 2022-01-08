@@ -20,7 +20,7 @@ const CurrencyItems = ({ search, list, setCurDropdown }) => {
     })
 
     return (
-        <div className="grid gap-3 md:gap-4 grid-cols-2 md:grid-cols-3 overflow-hidden">
+        <div className="grid gap-3 md:gap-4 grid-cols-1 mdgrid-cols-2 lg:grid-cols-3 overflow-hidden">
             {filterList.map(currency => (
                 <div 
                     key={currency.code}
@@ -41,11 +41,11 @@ const CurrencyList = ({ setCurDropdown }) => {
     return (
         <div className='bg-white shadow-bs3 py-6 px-2 md:px-4 absolute top-16 right-4 left-4 md:left-[unset] z-50 rounded-md h-full min-h-[calc(100vh-120px)] overflow-y-scroll md:min-w-[65vw]'>
             <RiCloseCircleFill 
-                className='absolute top-5 right-5 cursor-pointer'
+                className='absolute top-3 md:top-5 right-5 cursor-pointer'
                 onClick={() => setCurDropdown(false)}
                 size={24}
             />
-            <div className="flex justify-center items-center mb-3">
+            <div className="flex justify-center items-center mb-3 mt-6 md:mt-0">
                 <input 
                     type="text" 
                     value={search}

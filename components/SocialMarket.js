@@ -2,6 +2,7 @@ import React from 'react'
 import { getHostName } from '../utils/getHostName'
 import { BsDiscord, BsFacebook, BsGithub, BsReddit, BsTelegram, BsTwitter } from 'react-icons/bs'
 import { IoLogoBitbucket } from 'react-icons/io5'
+import { truncate } from 'lodash'
 
 const SocialMarket = ({ Links, coinName }) => {
     return (
@@ -20,7 +21,7 @@ const SocialMarket = ({ Links, coinName }) => {
                                 rel='noreferrer'
                                 className='font-semibold bg-slate-200 hover:bg-slate-300 hover:shadow-md transition-all duration-75 rounded-md py-1 px-3'
                             >
-                                {getHostName(site)}
+                                {truncate(getHostName(site), {'length': 20})}
                             </a>
                         }
                         </React.Fragment>
@@ -42,7 +43,7 @@ const SocialMarket = ({ Links, coinName }) => {
                                 rel='noreferrer'
                                 className='font-semibold bg-slate-200 hover:bg-slate-300 hover:shadow-md transition-all duration-75 rounded-md py-1 px-3'
                             >
-                                {getHostName(site)}
+                                {truncate(getHostName(site), {'length': 20})}
                             </a>
                         }
                         </React.Fragment>

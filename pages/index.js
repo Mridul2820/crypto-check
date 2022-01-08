@@ -38,7 +38,7 @@ const Home = () => {
     if(loading) return <Loader />
 
     return (
-        <div className="px-5 flex flex-col pb-4 min-h-[50vh] shadow-lg relative pt-24">
+        <div className="px-4 md:px-5 flex flex-col pb-4 min-h-[50vh] shadow-lg relative pt-24">
             <NextSeo {...SEO} />
 
             <div className="absolute top-0 left-0 right-0 h-80 z-10 overflow-x-hidden">
@@ -56,7 +56,7 @@ const Home = () => {
             </div>
 
             <div className="shadow-bs1 mb-5 z-20">
-                <div className="grid gap-2 md:gap-4 grid-cols-gridcoinsm md:grid-cols-gridcoin items-center sticky top-0 px-2 sm:px-3 py-4 text-gray-700 border-b-[1px] border-gray-600 bg-slate-50 z-40">
+                <div className="grid gap-2 md:gap-4 grid-cols-gridcoinsm md:grid-cols-gridcoin items-center sticky top-0 px-3 sm:px-4 py-4 text-gray-700 border-b-[1px] border-gray-600 bg-slate-50 z-40">
                     <span className="">#</span>
                     <span className="">Name</span>
                     <span className="">Code</span>

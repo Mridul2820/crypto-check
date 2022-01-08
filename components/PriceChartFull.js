@@ -1,9 +1,9 @@
 import React from 'react'
-import { LineChart, Line, Tooltip, YAxis, XAxis } from 'recharts';
+import { LineChart, Line, Tooltip, YAxis, XAxis, ResponsiveContainer } from 'recharts';
 import { useRecoilValue } from 'recoil';
 import { currencyState } from '../atoms/currencyAtom';
 
-const PriceChartFull = ({ prices, GraphWidth, GraphHeight }) => {
+const PriceChartFull = ({ prices }) => {
     const currencyId = useRecoilValue(currencyState);
 
     const priceLong = {
@@ -74,29 +74,31 @@ const PriceChartFull = ({ prices, GraphWidth, GraphHeight }) => {
     }
 
     return (
-        <LineChart width={GraphWidth} height={GraphHeight} data={priceObj}>
-            <Tooltip 
-                content={<CustomTooltip />}
-            />
-            <XAxis 
-                dataKey="date"
-                tickFormatter={tickDate}
-                tickSize={4}
-            />
-            <YAxis 
-                domain={["dataMin", 'dataMax']}
-                tickFormatter={tickPrice}
-                tickSize={2}
-                padding={{ top: 10, bottom: 10 }}
-            />
-            <Line 
-                type="monotone" 
-                dataKey="price"
-                stroke="#389fff"
-                strokeWidth={1}
-                dot={false} 
-            />
-        </LineChart>
+        <ResponsiveContainer width="100%" height="100%">
+            <LineChart width={800} height={300} data={priceObj}>
+                <Tooltip 
+                    content={<CustomTooltip />}
+                />
+                <XAxis 
+                    dataKey="date"
+                    tickFormatter={tickDate}
+                    tickSize={4}
+                />
+                <YAxis 
+                    domain={["dataMin", 'dataMax']}
+                    tickFormatter={tickPrice}
+                    tickSize={2}
+                    padding={{ top: 10, bottom: 10 }}
+                />
+                <Line 
+                    type="monotone" 
+                    dataKey="price"
+                    stroke="#389fff"
+                    strokeWidth={1}
+                    dot={false} 
+                />
+            </LineChart>
+        </ResponsiveContainer>
     )
 }
 

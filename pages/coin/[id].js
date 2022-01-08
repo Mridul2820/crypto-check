@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
-import { ResponsiveContainer } from 'recharts';
 import { useRouter } from 'next/router';
 import { currencyState } from '../../atoms/currencyAtom';
 import { useRecoilValue } from 'recoil';
@@ -109,15 +108,15 @@ const Coin = () => {
             </div>
 
             {price?.prices &&
-            <div className="mt-8 shadow-bs2 max-w-[1000px] mx-auto rounded-md bg-white p-3 select-none">
-                <p className='font-semibold text-lg mb-5 text-center'>{coin.name} price in last 7 days</p>
-                <ResponsiveContainer width="100%" height="100%" className="flex justify-center">
+            <div className="flex flex-col justify-center items-center mt-8 shadow-bs2 w-full max-w-[1000px] mx-auto rounded-md bg-white p-3 select-none">
+                <p className='font-semibold text-lg mb-5 text-center'>
+                    {coin.name} price in last 7 days
+                </p>
+                <div className="w-full h-52 md:h-80">
                     <PriceChartFull 
                         prices={price?.prices}
-                        GraphWidth={800}
-                        GraphHeight={350}
                     />
-                </ResponsiveContainer>
+                </div>
             </div>
             }
 

@@ -41,17 +41,17 @@ const Home = () => {
         <div className="px-5 flex flex-col pb-4 min-h-[50vh] shadow-lg relative pt-24">
             <NextSeo {...SEO} />
 
-            <div className="absolute top-0 left-5 right-5 h-80 overflow-x-hidden z-10">
-                <h1 className='font-bold text-3xl text-center mt-5'>Crypto Check</h1>
+            <div className="absolute top-0 left-0 right-0 h-80 z-10 overflow-x-hidden">
+                <h1 className='font-bold text-2xl md:text-3xl text-center mt-8 md:mt-5'>Crypto Check</h1>
                 <img 
                     src="./assets/bitcoin-big.svg"
                     alt="logo" 
-                    className='absolute top-4 left-5 w-20 hover:scale-105 transition-all duration-500 ease-out select-none'
+                    className='absolute top-3 -left-1 md:left-5 w-16 md:w-20 hover:scale-105 transition-all duration-500 ease-out select-none'
                 />
                 <img 
-                    src="./assets/ethereum-bubble.svg"
+                    src="./assets/bubble-ethereum.svg"
                     alt="logo" 
-                    className='absolute top-4 -right-16 w-72 hover:scale-105 transition-all duration-500 ease-out select-none'
+                    className='absolute top-3 -right-5 md:right-0 w-24 hover:scale-105 transition-all duration-500 ease-out select-none'
                 />
             </div>
 

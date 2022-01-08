@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { NextSeo } from 'next-seo';
-import CoinRow from '../components/CoinRow';
 import axios from 'axios';
 import { useRecoilValue } from 'recoil';
 import { currencyState } from '../atoms/currencyAtom';
 import Loader from '../components/Loader';
+import dynamic from 'next/dynamic';
+
+const CoinRow = dynamic(() => import('../components/home/CoinRow'));
 
 const { SITE_URL } = process.env
 

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import { currencyState } from '../atoms/currencyAtom'
+import { currencyState } from '../../atoms/currencyAtom'
 import PriceChart from './PriceChart'
 
 const CoinRow = ({ coin, index }) => {

@@ -35,7 +35,7 @@ module.exports = {
             },
             backgroundColor: {
                 'slate-light': 'rgba(75, 85, 99, .5)',
-                'custom-blue': '#389fff'
+                'custom-blue': 'rgb(56, 159, 255)'
             }
         },
     },

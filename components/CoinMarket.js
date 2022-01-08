@@ -14,7 +14,7 @@ const CoinMarket = ({ coinName, coinDate, coinMarket }) => {
 
     return (
         <div className='w-full md:w-[50%] shadow-bs1 p-4 bg-white rounded-md'>
-            <p className='mb-2 text-xl font-semibold'>Market Info of {coinName}</p>
+            <p className='mb-2 text-xl font-semibold select-none'>Market Info of {coinName}</p>
             {coinDate && 
                 <div className='flex justify-between py-2 border-b-[1px] border-slate-300'>
                     <span className='text-slate-700'>First Introduced:</span>

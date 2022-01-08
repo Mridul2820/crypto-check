@@ -7,7 +7,7 @@ import { truncate } from 'lodash'
 const SocialMarket = ({ Links, coinName }) => {
     return (
         <div className='w-[100%] md:w-[50%] shadow-bs1 p-4 bg-white rounded-md'>
-            <p className='mb-2 text-xl font-semibold'>Social Info of {coinName}</p>
+            <p className='mb-2 text-xl font-semibold select-none'>Social Info of {coinName}</p>
             {Links.homepage.length > 0 && 
                 <div className='flex gap-2 justify-between py-1 border-b-[1px] border-slate-300'>
                     <span className='text-slate-700'>Website:</span>

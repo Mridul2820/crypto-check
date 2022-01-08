@@ -34,7 +34,8 @@ module.exports = {
                 'light-blue': 'linear-gradient(180deg,rgb(233, 244, 254),rgba(233, 244, 254, .99) 25%, rgba(255, 255, 255, 0))'
             },
             backgroundColor: {
-                'slate-light': 'rgba(75, 85, 99, .5)'
+                'slate-light': 'rgba(75, 85, 99, .5)',
+                'custom-blue': '#389fff'
             }
         },
     },

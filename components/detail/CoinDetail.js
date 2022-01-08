@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
 import { useRecoilValue } from 'recoil';
-import { currencyState } from '../atoms/currencyAtom';
+import { currencyState } from '../../atoms/currencyAtom';
 
 const CoinDetail = ({ coin }) => {
     const currencyId = useRecoilValue(currencyState);

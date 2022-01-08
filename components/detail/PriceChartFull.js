@@ -1,7 +1,7 @@
 import React from 'react'
 import { LineChart, Line, Tooltip, YAxis, XAxis, ResponsiveContainer } from 'recharts';
 import { useRecoilValue } from 'recoil';
-import { currencyState } from '../atoms/currencyAtom';
+import { currencyState } from '../../atoms/currencyAtom';
 
 const PriceChartFull = ({ prices }) => {
     const currencyId = useRecoilValue(currencyState);

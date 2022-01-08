@@ -7,14 +7,15 @@ import { useRecoilValue } from 'recoil';
 import axios from 'axios';
 import Loader from '../../components/Loader';
 
-const CoinMarket = dynamic(() => import('../../components/CoinMarket'));
-const PriceChange = dynamic(() => import('../../components/PriceChange'));
-const SocialMarket = dynamic(() => import('../../components/SocialMarket'));
-const CoinDetail = dynamic(() => import('../../components/CoinDetail'));
-const PriceChartFull = dynamic(() => import('../../components/PriceChartFull'));
-const CoinDescription = dynamic(() => import('../../components/CoinDescription'));
+const CoinMarket = dynamic(() => import('../../components/detail/CoinMarket'));
+const PriceChange = dynamic(() => import('../../components/detail/PriceChange'));
+const SocialMarket = dynamic(() => import('../../components/detail/SocialMarket'));
+const CoinDetail = dynamic(() => import('../../components/detail/CoinDetail'));
+const PriceChartFull = dynamic(() => import('../../components/detail/PriceChartFull'));
+const CoinDescription = dynamic(() => import('../../components/detail/CoinDescription'));
 
 const { SITE_URL } = process.env
+// const { THEGUARDIAN_API_KEY } = process.env
 
 const Coin = () => {
     const router = useRouter()
@@ -22,6 +23,7 @@ const Coin = () => {
 
     const [coin, setCoin] = useState([])
     const [price, setPrice] = useState([])
+    const [news, setNews] = useState([])
     const [loading, setLoading] = useState(true)
     const currencyId = useRecoilValue(currencyState);
 
@@ -40,8 +42,17 @@ const Coin = () => {
         setPrice(data)
     }
 
+    // const getNewsData = async() => {
+    //     const { data } = await axios.get(
+    //         `https://content.guardianapis.com/search?q=${id}&order-by=newest&page=1&page-size=6&api-key=${THEGUARDIAN_API_KEY}`
+    //     );
+
+    //     setNews(data)
+    // }
+
     useEffect(() => {
         if(!router.isReady) return;
+        // getNewsData()
         getCoinData()
         const interval = setInterval(() => {
             getCoinData()

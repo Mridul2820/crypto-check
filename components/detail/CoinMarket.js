@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil';
-import { currencyState } from '../atoms/currencyAtom';
+import { currencyState } from '../../atoms/currencyAtom';
 
 const CoinMarket = ({ coinName, coinDate, coinMarket }) => {
     const currencyId = useRecoilValue(currencyState);

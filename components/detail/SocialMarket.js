@@ -1,5 +1,5 @@
 import React from 'react'
-import { getHostName } from '../utils/getHostName'
+import { getHostName } from '../../utils/getHostName'
 import { BsDiscord, BsFacebook, BsGithub, BsReddit, BsTelegram, BsTwitter } from 'react-icons/bs'
 import { IoLogoBitbucket } from 'react-icons/io5'
 import { truncate } from 'lodash'

@@ -6,9 +6,9 @@ import { DefaultSeo } from 'next-seo'
 import SEO from '../next-seo.config'
 
 // Components
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import ScrollTop from '../components/ScrollTop'
+import Navbar from '../components/layout/Navbar'
+import Footer from '../components/layout/Footer'
+import ScrollTop from '../components/widget/ScrollTop'
 
 function MyApp({ Component, pageProps }) {
     return (

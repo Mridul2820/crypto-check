@@ -2,19 +2,23 @@ import React, { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
-import { currencyState } from '../../atoms/currencyAtom';
-import { useRecoilValue } from 'recoil';
 import axios from 'axios';
-import Loader from '../../components/Loader';
 
-const CoinMarket = dynamic(() => import('../../components/CoinMarket'));
-const PriceChange = dynamic(() => import('../../components/PriceChange'));
-const SocialMarket = dynamic(() => import('../../components/SocialMarket'));
-const CoinDetail = dynamic(() => import('../../components/CoinDetail'));
-const PriceChartFull = dynamic(() => import('../../components/PriceChartFull'));
-const CoinDescription = dynamic(() => import('../../components/CoinDescription'));
+import { useRecoilValue } from 'recoil';
+import { currencyState } from '../../atoms/currencyAtom';
+
+const CoinMarket = dynamic(() => import('../../components/detail/CoinMarket'));
+const PriceChange = dynamic(() => import('../../components/detail/PriceChange'));
+const SocialMarket = dynamic(() => import('../../components/detail/SocialMarket'));
+const CoinDetail = dynamic(() => import('../../components/detail/CoinDetail'));
+const PriceChartFull = dynamic(() => import('../../components/detail/PriceChartFull'));
+const CoinDescription = dynamic(() => import('../../components/detail/CoinDescription'));
+const CoinNews = dynamic(() => import('../../components/detail/CoinNews'));
+
+import Loader from '../../components/widget/Loader';
 
 const { SITE_URL } = process.env
+const { THEGUARDIAN_API_KEY } = process.env
 
 const Coin = () => {
     const router = useRouter()
@@ -22,6 +26,7 @@ const Coin = () => {
 
     const [coin, setCoin] = useState([])
     const [price, setPrice] = useState([])
+    const [news, setNews] = useState([])
     const [loading, setLoading] = useState(true)
     const currencyId = useRecoilValue(currencyState);
 
@@ -40,8 +45,20 @@ const Coin = () => {
         setPrice(data)
     }
 
+    const getNewsData = async() => {
+        const data = await axios.get(
+            `https://content.guardianapis.com/search?q=${id} OR ${coin.id}&query-fields=headline,thumbnail,description,body&order-by=newest&page=1&page-size=6&show-elements=image&show-fields=headline,thumbnail,short-url&api-key=${THEGUARDIAN_API_KEY}`
+        );
+
+        setNews(data?.data?.response?.results)
+    }
+
     useEffect(() => {
         if(!router.isReady) return;
+        if(coin){
+            getNewsData()
+        }
+
         getCoinData()
         const interval = setInterval(() => {
             getCoinData()
@@ -110,7 +127,7 @@ const Coin = () => {
             {price?.prices &&
             <div className="flex flex-col justify-center items-center mt-8 shadow-bs2 w-full max-w-[1000px] mx-auto rounded-md bg-white p-3 select-none">
                 <p className='font-semibold text-lg mb-5 text-center'>
-                    {coin.name} price in last 7 days
+                    {coin.name} price in Last 7 Days
                 </p>
                 <div className="w-full h-52 md:h-80">
                     <PriceChartFull 
@@ -124,6 +141,13 @@ const Coin = () => {
                 <CoinDescription 
                     name={coin.name}
                     description={coin.description.en}
+                />
+            }
+
+            {news?.length > 0 && 
+                <CoinNews 
+                    name={coin.name}
+                    newsList={news}
                 />
             }
         </div>

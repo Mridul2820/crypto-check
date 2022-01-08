@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useRecoilState } from 'recoil';
-import { currencyState } from '../atoms/currencyAtom';
-import { currencies } from '../data/currencies'
+import { currencyState } from '../../atoms/currencyAtom';
+import { currencies } from '../../data/currencies'
 import { RiCloseCircleFill } from 'react-icons/ri'
 
 const CurrencyItems = ({ search, list, setCurDropdown }) => {

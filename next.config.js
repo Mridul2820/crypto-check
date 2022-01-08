@@ -4,6 +4,7 @@ require('dotenv').config()
 module.exports = {
     env: {
         SITE_URL: process.env.SITE_URL,
+        THEGUARDIAN_API_KEY: process.env.THEGUARDIAN_API_KEY,
     },
     publicRuntimeConfig: {},
     images: {
@@ -13,7 +14,7 @@ module.exports = {
         ],
         domains: [
             'localhost', 
-            'res.cloudinary.com',
+            'media.guim.co.uk',
             'assets.coingecko.com'
         ]
     },

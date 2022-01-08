@@ -47,7 +47,7 @@ const Coin = () => {
 
     const getNewsData = async() => {
         const data = await axios.get(
-            `https://content.guardianapis.com/search?q=${id} OR ${coin.id}&query-fields=headline,thumbnail,description,body&order-by=newest&page=1&page-size=6&show-elements=image&show-fields=headline,thumbnail,short-url&api-key=${THEGUARDIAN_API_KEY}`
+            `https://content.guardianapis.com/search?q=${id} OR ${coin.id}&query-fields=headline,thumbnail,body&order-by=newest&page=1&page-size=6&show-elements=image&show-fields=headline,thumbnail,short-url&api-key=${THEGUARDIAN_API_KEY}`
         );
 
         setNews(data?.data?.response?.results)

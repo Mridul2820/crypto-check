@@ -37,7 +37,6 @@ const News = ({ news }) => {
 }
 
 const CoinNews = ({ name, newsList }) => {
-    console.log(newsList)
     return (
         <div className='mt-10 shadow-bs2 max-w-[1000px] mx-auto rounded-md bg-white p-5'>
             <h3 className='font-bold text-2xl mb-4'>{name} Latest News</h3>

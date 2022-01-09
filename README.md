@@ -31,11 +31,11 @@
 - User can also chnage the currency from currency list
 
 ## Tech Stack 👾
-- Next JS
-- Tailwind
-- Recoil
-- Recharts
-- Coingecko(API)
+- [Next JS]9https://nextjs.org/
+- [Tailwind](https://tailwindcss.com/)
+- [Recoil](https://recoiljs.org/)
+- [Recharts](https://recharts.org/en-US/)
+- [Coingecko API](https://www.coingecko.com/en/api/documentation)
 
 ## Demo 🌍
 This app is Deployed to Vercel

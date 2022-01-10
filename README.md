@@ -31,7 +31,7 @@
 - User can also chnage the currency from currency list
 
 ## Tech Stack 👾
-- [Next JS]9https://nextjs.org/
+- [Next JS](https://nextjs.org/)
 - [Tailwind](https://tailwindcss.com/)
 - [Recoil](https://recoiljs.org/)
 - [Recharts](https://recharts.org/en-US/)
